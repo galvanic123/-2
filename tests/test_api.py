@@ -5,7 +5,7 @@ from unittest.mock import patch
 import requests
 import self
 
-from src.api_modul import HhJobService
+from src.api_class import HhJobService
 
 
 class TestHhJobService(unittest.TestCase):
