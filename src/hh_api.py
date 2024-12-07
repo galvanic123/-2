@@ -21,7 +21,7 @@ class HeadHunterAPI(Parser, ABC):
         """Инициируем конструктор класса"""
         self.__url = 'https://api.hh.ru/vacancies'
         self.__headers = {'User-Agent': 'HH-User-Agent'}
-        self.params = {'text': '', 'page': 0, 'per_page': 10}
+        self.params = {'text': '', 'page': 0, 'per_page': 20}
         self.vacancies = []
         super().__init__()
 

@@ -45,7 +45,7 @@ class FilterSortVacancies:
         return vacancies_list
 
 
-    def get_top_vacancies(self, vacancies_list: List) -> str:
+    def get_top_vacancies(self, vacancies_list: List) -> List:
         """Функция для получения топ Н вакансий, Н указывает пользователь."""
         top_vacancies = ""
         if self.top_n < len(vacancies_list):
