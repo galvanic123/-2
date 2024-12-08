@@ -3,7 +3,7 @@ from src.hh_api import HeadHunterAPI
 from src.utils import FilterSortVacancies
 
 
-def user_interaction():
+def user_interaction(_file_name=None):
  # Создание экземпляра класса для работы с API
     hh_api = HeadHunterAPI()
     search_query = input("Введите поисковый запрос: ")
@@ -24,7 +24,7 @@ def user_interaction():
 
     read_vacs_from_json = json_saver.read_file()
  # Создание экземпляра класса фильтрации и сортировки вакансий
-    filtered_obj = FilterSortVacancies(filter_word, filter_area, filter_salary, top_n)
+    filtered_obj = FilterSortVacancies(filter_word, filter_area, filter_salary, top_n, _file_name)
     filtered_by_description = filtered_obj.filter_by_description(read_vacs_from_json)
     print(f"Отфильтровано {len(filtered_by_description)} вакансий")
     filtered_by_area = filtered_obj.filter_by_area(filtered_by_description)

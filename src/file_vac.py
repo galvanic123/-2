@@ -1,6 +1,8 @@
 import json
 import os
 from abc import ABC, abstractmethod
+from fileinput import filename
+
 from src.vacancy import Vacancy
 from config import DATA_DIR
 
@@ -72,4 +74,4 @@ class JSONSaver(Employee):
 
     def del_vacancy(self):
         with open(self.filename, 'w') as f:
-            pass
+            json.dump([], f, ensure_ascii=False, indent=4)

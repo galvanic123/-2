@@ -58,21 +58,3 @@ class Vacancy:
     
     def __eq__(self, other):
         return self.salary == other.salary
-    
-    
-    # if __name__ == '__main__':
-    #     vacancy_1 = {
-    #         "name": "повар",
-    #         "alternate_url": "ссылка",
-    #         "salary": {"from": 10000},
-    #         "snippet": {"responsibility": "требуется повар"},
-    #         "area": {"name": "Кукуево"}
-    #     }
-    #
-    #     vacancy_2 = {
-    #         "name": "таксист",
-    #         "alternate_url": None,
-    #         "salary": {"from": None},
-    #         "snippet": None,
-    #         "area": None
-    #     }
