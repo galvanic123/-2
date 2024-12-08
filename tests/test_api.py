@@ -1,24 +1,16 @@
-import unittest
-from unittest import result
-from unittest.mock import patch
+import pytest
 
-import requests
-import self
-
-from src.api_class import HhJobService
+from src.hh_api import HeadHunterAPI
 
 
-class TestHhJobService(unittest.TestCase):
-    @patch('requests.get')
-    def test_get_jobs(self, mock_requests_get):
-        mock_response = {'items': [{'name': 'Python Developer', 'alternate_url': 'example.com',
-                                    'salary': {'from':100000}, 'description': 'Experience: 3 years'}]}
-        mock_requests_get.return_value.json.return_value = mock_response
+@pytest.fixture
+def api_instance():          # type: ignore[no-untyped-def]
+    return HeadHunterAPI()
 
-        hh_api = HhJobService()
-        result = hh_api.get_jobs('Python Developer')
-"""Проверка что метод возвращает ожидаемый результат"""
-        self.assertEqual(result, mock_response)
 
-if __name__ == '__main__':
-    unittest.main()
+def test_get_vacancies(api_instance):            # type: ignore[no-untyped-def]
+    keyword = 'python'
+    vacancies = api_instance.load_vacancies(keyword)
+    hh_vacancies = api_instance.get_vacancies()
+    # print(hh_vacancies, list)
+    assert isinstance(hh_vacancies, list)

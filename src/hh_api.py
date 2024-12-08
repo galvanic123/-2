@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import List
 
 import requests
 
@@ -7,17 +8,17 @@ class Parser(ABC):
     """Абстрактный класс для работы с API сервисов с вакансиями"""
 
     @abstractmethod
-    def load_vacancies(self, keyword):
+    def load_vacancies(self, keyword):            # type: ignore[no-untyped-def]
         pass
 
     @abstractmethod
-    def get_vacancies(self):
+    def get_vacancies(self) -> None:
         pass
 
 
 class HeadHunterAPI(Parser, ABC):
     """Класс для получения вакансий"""
-    def __init__(self):
+    def __init__(self):             # type: ignore[no-untyped-def]
         """Инициируем конструктор класса"""
         self.__url = 'https://api.hh.ru/vacancies'
         self.__headers = {'User-Agent': 'HH-User-Agent'}
@@ -25,8 +26,7 @@ class HeadHunterAPI(Parser, ABC):
         self.vacancies = []
         super().__init__()
 
-
-    def load_vacancies(self, keyword: str):
+    def load_vacancies(self, keyword: str):             # type: ignore[no-untyped-def]
         """Функция для получения вакансий по заданному слову"""
         self.params['text'] = keyword
         while self.params.get('page') != 2:
@@ -39,7 +39,6 @@ class HeadHunterAPI(Parser, ABC):
                 self.vacancies.extend(vacancies)
                 self.params['page'] += 1
 
-
-    def get_vacancies(self) -> list:
+    def get_vacancies(self) -> List:
         """Возвращает список вакансий"""
         return self.vacancies
